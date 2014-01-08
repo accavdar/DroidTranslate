@@ -35,9 +35,9 @@ import java.io.OutputStream;
  * Date: 19/12/13
  */
 
-public class SimpleOcrActivity extends Activity implements TranslateHandler {
+public class MainActivity extends Activity implements TranslateHandler {
 
-    private static final String TAG = SimpleOcrActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private final int BUFFER = 1024;
 

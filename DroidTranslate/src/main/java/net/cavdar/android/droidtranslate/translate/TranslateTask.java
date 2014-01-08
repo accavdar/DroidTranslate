@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import net.cavdar.android.droidtranslate.helper.JsonUtil;
-import net.cavdar.android.droidtranslate.ui.SimpleOcrActivity;
+import net.cavdar.android.droidtranslate.ui.MainActivity;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -15,7 +15,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 
 /**
  * User: accavdar
@@ -23,7 +22,7 @@ import java.net.URLEncoder;
  */
 public class TranslateTask extends AsyncTask<String, Void, String> {
 
-    private static final String TAG = SimpleOcrActivity.class.getSimpleName();
+    private static final String TAG = TranslateTask.class.getSimpleName();
 
     private TranslateHandler translateHandler;
 
