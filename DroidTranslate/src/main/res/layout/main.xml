@@ -5,15 +5,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_text" />
+        android:text="@string/button_photo" />
 
     <EditText
-        android:id="@+id/field"
+        android:id="@+id/ocred"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/text_hint" />
+        android:hint="@string/text_ocr" />
+
+    <EditText
+        android:id="@+id/translated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_translate" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package net.cavdar.android.droidtranslate;
+package net.cavdar.android.droidtranslate.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,6 +18,12 @@ import android.widget.EditText;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import net.cavdar.android.droidtranslate.R;
+import net.cavdar.android.droidtranslate.domain.Languages;
+import net.cavdar.android.droidtranslate.translate.TranslateHandler;
+import net.cavdar.android.droidtranslate.translate.TranslateHelper;
+import net.cavdar.android.droidtranslate.translate.TranslateTask;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,7 +34,10 @@ import java.io.OutputStream;
  * User: accavdar
  * Date: 19/12/13
  */
-public class SimpleOcrActivity extends Activity {
+
+public class SimpleOcrActivity extends Activity implements TranslateHandler {
+
+    private static final String TAG = SimpleOcrActivity.class.getSimpleName();
 
     private final int BUFFER = 1024;
 
@@ -52,13 +61,13 @@ public class SimpleOcrActivity extends Activity {
 
     private final String PHOTO_TAKEN = "photo_taken";
 
-    protected static final String TAG = SimpleOcrActivity.class.getSimpleName();
-
     protected String IMAGE_FILE_NAME = APP_DIR + FILE_SEPARATOR + "ocr.jpg";
 
     protected Button button;
 
-    protected EditText field;
+    protected EditText ocred;
+
+    protected EditText translated;
 
     protected boolean isPhotoTaken = false;
 
@@ -70,8 +79,9 @@ public class SimpleOcrActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        field = (EditText) findViewById(R.id.field);
-        button = (Button) findViewById(R.id.button);
+        ocred = (EditText) findViewById(R.id.ocred);
+        translated = (EditText) findViewById(R.id.translated);
+        button = (Button) findViewById(R.id.photo);
         button.setOnClickListener(new ButtonClickHandler());
     }
 
@@ -86,6 +96,11 @@ public class SimpleOcrActivity extends Activity {
         if (savedInstanceState.getBoolean(PHOTO_TAKEN)) {
             onPhotoTaken();
         }
+    }
+
+    @Override
+    public void handleTranslation(String translatedText) {
+        translated.setText(translatedText);
     }
 
     public class ButtonClickHandler implements View.OnClickListener {
@@ -124,8 +139,12 @@ public class SimpleOcrActivity extends Activity {
         String text = processBitmap(bitmap);
 
         if (text.length() != 0) {
-            field.setText(field.getText().toString().length() == 0 ? text : field.getText() + " " + text);
-            field.setSelection(field.getText().toString().length());
+            ocred.setText(text);
+            String url = TranslateHelper.createUrl(Languages.EN, Languages.TR, text);
+            new TranslateTask(this, this).execute(url);
+        } else {
+            ocred.setText("Error: Text recognition failed!");
+            translated.setText("Hata: Karakter tanıması başarısız!");
         }
     }
 
@@ -140,7 +159,7 @@ public class SimpleOcrActivity extends Activity {
 
         Log.v(TAG, "OCRed Text: " + recognizedText);
 
-        if (LANG.equalsIgnoreCase("eng") ) {
+        if (LANG.equalsIgnoreCase("eng")) {
             recognizedText = recognizedText.replaceAll("[^a-zA-Z0-9]+", " ");
         }
 

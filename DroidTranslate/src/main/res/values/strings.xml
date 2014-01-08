@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">DroidTranslate</string>
-    <string name="button_text">OCR</string>
-    <string name="text_hint">OCRed Text will appear here</string>
+    <string name="button_photo">Take Photo</string>
+    <string name="text_ocr">OCRed Text will appear here</string>
+    <string name="text_translate">Translated Text will appear here</string>
 
 </resources>
