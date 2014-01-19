@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Language Selection"
+        android:key="language_selection">
+
+        <ListPreference
+            android:key="source_language"
+            android:title="Source Language"
+            android:summary="Select source language translation performed to"
+            android:defaultValue="tr"
+            android:entries="@array/languages"
+            android:entryValues="@array/languageValues" />
+
+        <ListPreference
+            android:key="target_language"
+            android:title="Target Language"
+            android:summary="Select target language translation performed from"
+            android:defaultValue="en"
+            android:entries="@array/languages"
+            android:entryValues="@array/languageValues" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

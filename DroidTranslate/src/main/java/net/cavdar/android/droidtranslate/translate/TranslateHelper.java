@@ -9,7 +9,9 @@ import net.cavdar.android.droidtranslate.domain.Languages;
 
 public class TranslateHelper {
 
-    private static final String API_KEY = " [PUT YOUR API KEY HERE] ";
+    // private static final String API_KEY = " [PUT YOUR API KEY HERE] ";
+
+    private static final String API_KEY = "AIzaSyDWPGMx8euTKkAmRvpD9fJ-_u-zi8G5y1w";
 
     private static final String URL_PATH = "https://www.googleapis.com/language/translate/v2";
 

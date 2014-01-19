@@ -91,7 +91,7 @@ public class MainActivity extends Activity implements TranslateHandler {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // open settings screen here
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_photo:
                 startCameraActivity();

@@ -9,7 +9,7 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name="net.cavdar.android.droidtranslate.app.DroidTranslateApp"
+        android:name=".app.DroidTranslateApp"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
@@ -26,6 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="net.cavdar.android.droidtranslate.ui.SettingsActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

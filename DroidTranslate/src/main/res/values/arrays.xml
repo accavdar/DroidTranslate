@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string-array name="languages">
+        <item name="tr">Turkish</item>
+        <item name="en">English</item>
+        <item name="de">German</item>
+        <item name="fr">French</item>
+        <item name="it">Italian</item>
+        <item name="ja">Japanese</item>
+    </string-array>
+
+    <string-array name="languageValues">
+        <item name="tr">tr</item>
+        <item name="en">en</item>
+        <item name="de">de</item>
+        <item name="fr">fr</item>
+        <item name="it">it</item>
+        <item name="ja">ja</item>
+    </string-array>
+
+</resources>
