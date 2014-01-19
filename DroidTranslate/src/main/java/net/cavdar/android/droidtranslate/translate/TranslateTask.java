@@ -20,6 +20,7 @@ import java.io.IOException;
  * User: accavdar
  * Date: 08/01/14
  */
+
 public class TranslateTask extends AsyncTask<String, Void, String> {
 
     private static final String TAG = TranslateTask.class.getSimpleName();

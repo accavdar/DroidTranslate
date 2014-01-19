@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -42,8 +43,6 @@ public class MainActivity extends Activity implements TranslateHandler {
 
         ocred = (EditText) findViewById(R.id.ocred);
         translated = (EditText) findViewById(R.id.translated);
-        button = (Button) findViewById(R.id.photo);
-        button.setOnClickListener(new ButtonClickHandler());
     }
 
     @Override
@@ -64,11 +63,10 @@ public class MainActivity extends Activity implements TranslateHandler {
         translated.setText(translatedText);
     }
 
-    public class ButtonClickHandler implements View.OnClickListener {
-        public void onClick(View view) {
-            Log.v(TAG, "Starting Camera app");
-            startCameraActivity();
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     protected void startCameraActivity() {
@@ -78,7 +76,6 @@ public class MainActivity extends Activity implements TranslateHandler {
         startActivityForResult(intent, 0);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.i(TAG, "resultCode: " + resultCode);
@@ -87,6 +84,20 @@ public class MainActivity extends Activity implements TranslateHandler {
             onPhotoTaken();
         } else {
             Log.v(TAG, "User cancelled");
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // open settings screen here
+                return true;
+            case R.id.action_photo:
+                startCameraActivity();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
